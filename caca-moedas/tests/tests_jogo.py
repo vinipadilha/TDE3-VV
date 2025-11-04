@@ -16,7 +16,7 @@ class TestCacaMoedas(unittest.TestCase):
             self.assertLessEqual(self.jogo.player_y, self.jogo.altura)
         self.assertEqual(self.jogo.estado, "RUNNING")
 
-    # CT2 — Coletar moeda incrementa pontuação
+    # CT2 — coletar moeda incrementa pontuação
     def test_coletar_moeda_incrementa_score(self):
         # coloca o jogador sobre a moeda, movendo até colidir
         self.jogo.player_x = self.jogo.moeda.x
@@ -26,12 +26,12 @@ class TestCacaMoedas(unittest.TestCase):
         self.assertEqual(self.jogo.score, antes + 1)
         self.assertIn(self.jogo.estado, ("RUNNING", "WON"))
 
-    # CT3 — Colisão com obstáculo => derrota
+    # CT3 — colisão com obstáculo => derrota
     def test_colisao_resulta_derrota(self):
         self.jogo.colisao_obstaculo()
         self.assertEqual(self.jogo.estado, "LOST")
 
-    # CT4 — Tempo chega a zero => derrota (se não venceu)
+    # CT4 — tempo chega a zero => derrota (se não venceu)
     def test_tempo_em_zero_derrota(self):
         j = Jogo(tempo_ms=1000, meta=7, seed=2)
         self.assertEqual(j.estado, "RUNNING")
@@ -39,7 +39,7 @@ class TestCacaMoedas(unittest.TestCase):
         self.assertEqual(j.tempo, 0)
         self.assertEqual(j.estado, "LOST")
 
-    # CT5 — Vitória ao atingir meta
+    # CT5 — vitória ao atingir meta
     def test_vitoria_ao_atingir_meta(self):
         j = Jogo(meta=3, seed=3)
         for _ in range(2):
@@ -56,7 +56,7 @@ class TestCacaMoedas(unittest.TestCase):
         j.coletar_moeda()
         self.assertEqual(j.score, 3)
 
-    # CT6 — Reiniciar após estado terminal
+    # CT6 — reiniciar após estado terminal
     def test_reiniciar_pos_estado_terminal(self):
         self.jogo.colisao_obstaculo()
         self.assertEqual(self.jogo.estado, "LOST")

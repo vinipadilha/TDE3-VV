@@ -3,7 +3,10 @@ from dataclasses import dataclass
 
 @dataclass
 class Rect:
-    x: int; y: int; w: int; h: int
+    x: int; 
+    y: int; 
+    w: int; 
+    h: int;
     def colliderect(self, other: "Rect") -> bool:
         return not (self.x + self.w < other.x or other.x + other.w < self.x or
                     self.y + self.h < other.y or other.y + other.h < self.y)
@@ -51,7 +54,7 @@ class Jogo:
         if self.tempo <= 0 and self.estado == "RUNNING" and self.score < self.meta:
             self.estado = "LOST"
 
-    # ---------- API compatível com os testes ----------
+    # ---------- compatível com os testes ----------
     def mover(self, dx, dy):
         if self.estado != "RUNNING": return
         self.player_x += dx; self.player_y += dy

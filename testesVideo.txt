@@ -1,0 +1,9 @@
+venv\Scripts\activate
+
+python -m unittest -v
+
+
+coverage run -m unittest
+coverage report -m
+
+coverage html
